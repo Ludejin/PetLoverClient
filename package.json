@@ -1,12 +1,60 @@
 {
   "name": "PetLoverClient",
   "version": "0.0.1",
-  "private": true,
+  "description": "PetLover Client",
+  "license": "APACHE 2.0",
+  "private": false,
+  "jest": {
+    "preset": "jest-react-native",
+    "moduleNameMapper": {
+      "\\./datepicker$": "<rootDir>/node_modules/tcomb-form-native/lib/templates/bootstrap/datepicker.ios.js"
+    },
+    "preprocessorIgnorePatterns": [
+      "node_modules/(?!react-native|tcomb-form-native|apsl-react-native-button)"
+    ]
+  },
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "test": "jest",
+    "start": "react-native start",
+    "test:watch": "npm run test -- --watch",
+    "test-chrome": "node-debug --preload false --nodejs --harmony jest --runInBand",
+    "docs": "./node_modules/docker/docker -w -i src/ -o ../snowflake-pages "
   },
   "dependencies": {
+    "apsl-react-native-button": "3.0.0",
+    "immutable": "3.8.1",
+    "key-mirror": "1.0.1",
     "react": "15.3.1",
-    "react-native": "^0.32.0"
+    "react-native": "0.32.0",
+    "react-native-navbar": "1.5.0",
+    "react-native-router-flux": "3.31.1",
+    "react-native-simple-store": "1.0.1",
+    "react-native-simpledialog-android": "1.0.7",
+    "react-native-vector-icons": "2.0.3",
+    "react-redux": "4.4.5",
+    "redux": "3.5.2",
+    "redux-thunk": "2.1.0",
+    "redux-logger": "2.6.1",
+    "regenerator": "0.8.46",
+    "tcomb-form-native": "0.5.3",
+    "undefined": "0.1.0",
+    "underscore": "1.8.3",
+    "validate.js": "0.9.0"
+  },
+  "devDependencies": {
+    "babel-core": "6.9.0",
+    "babel-eslint": "^6.1.2",
+    "babel-jest": "14.0.0",
+    "babel-preset-react-native": "1.8.0",
+    "docker": "0.2.14",
+    "eslint": "^3.2.2",
+    "eslint-config-airbnb": "^10.0.0",
+    "eslint-plugin-import": "^1.12.0",
+    "eslint-plugin-jsx-a11y": "^2.0.1",
+    "eslint-plugin-react": "^6.0.0",
+    "istanbul": "0.4.3",
+    "react-addons-test-utils": "15.0.2",
+    "redux-mock-store": "1.0.3",
+    "rnpm-plugin-upgrade": "0.26.0"
   }
 }
