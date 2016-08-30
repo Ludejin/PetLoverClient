@@ -24,3 +24,9 @@ PetLoverClient with React-Native
 + undefined
 + underscore
 + validate.js
+
+
+
+# Thanks
+
+snowflake
