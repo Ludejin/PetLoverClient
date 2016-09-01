@@ -1,6 +1,6 @@
 /**
  * # authInitialState.js
- * 
+ *
  * This class is a Immutable object
  * Working *successfully* with Redux, requires
  * state that is immutable.
@@ -40,17 +40,16 @@ const Form = Record({
     passwordErrorMsg: '',
     passwordAgain: '',
     passwordAgainHasError: false,
-    passwordAgainErrorMsg: '',    
+    passwordAgainErrorMsg: '',
     showPassword: false
   }))
 });
 
 /**
  * ## InitialState
- * The form is set 
+ * The form is set
  */
 var InitialState = Record({
   form: new Form
 });
 export default InitialState;
-

@@ -1,3 +1,5 @@
 rootProject.name = 'PetLoverClient'
 
-include ':app'
+include ':app', ':react-native-i18n', ':react-native-simpledialog-android'
+project(':react-native-simpledialog-android').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-simpledialog-android/android')
+project(':react-native-i18n').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-i18n/android')

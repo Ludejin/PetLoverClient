@@ -1,5 +1,5 @@
 'use strict';
 
-import snowflake from './rn/snowflake';
+import petLover from './rn/petLover';
 
-snowflake('android');
+petLover('android');

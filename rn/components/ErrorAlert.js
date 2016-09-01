@@ -18,7 +18,7 @@ import  _ from 'underscore';
 
 var ErrorAlert = class ErrorAlertClass{
   /**
-   * ## ErrorAlert 
+   * ## ErrorAlert
    * setup to support testing
    */
   /**
