@@ -110,6 +110,42 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
+    signingConfigs {
+
+        def Properties localProps = new Properties()
+        localProps.load(new FileInputStream(file('../local.properties')))
+        def Properties keyProps = new Properties()
+
+        if (localProps['keystore.props.file']) {
+            keyProps.load(new FileInputStream(file(localProps['keystore.props.file'])))
+        } else {
+            keyProps["store"] = '../buildsystem/debug.keystore'
+            keyProps["alias"] = 'android'
+            keyProps["storePass"] = 'androiddebugkey'
+            keyProps["pass"] = 'android'
+        }
+
+        debug {
+            storeFile file(keyProps["store"])
+            keyAlias keyProps["alias"]
+            storePassword keyProps["storePass"]
+            keyPassword keyProps["pass"]
+        }
+
+        release {
+            assert localProps['keystore.props.file'];
+            storeFile file(keyProps["store"])
+            keyAlias keyProps["alias"]
+            storePassword keyProps["storePass"]
+            keyPassword keyProps["pass"]
+
+            // 同时满足下面两个条件才需要此配置
+            // 1. Gradle版本 >= 2.14.1
+            // 2. Android Gradle Plugin 版本 >= 2.2.0
+            // 作用是只使用旧版签名，禁用V2版签名模式
+//            v2SigningEnabled false
+        }
+    }
     // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
