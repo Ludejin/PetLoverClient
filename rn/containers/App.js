@@ -109,7 +109,7 @@ let App = React.createClass({
       () => {
         this.props.actions.getSessionToken();
       },
-      2500
+      10000
     );
 
   },
@@ -117,14 +117,14 @@ let App = React.createClass({
   render() {
     return(
       <View style={ styles.container }>
-	<Header isFetching={this.props.auth.form.isFetching}
-                showState={this.props.global.showState}
-                currentState={this.props.global.currentState}
-                onGetState={this.props.actions.getState}
-                onSetState={this.props.actions.setState}
-	/>
-
-	<Text style={ styles.summary }>Snowflake {I18n.t("App.version")}:  {this.props.deviceVersion}</Text>
+        <Header isFetching={this.props.auth.form.isFetching}
+          showState={this.props.global.showState}
+          currentState={this.props.global.currentState}
+          onGetState={this.props.actions.getState}
+          onSetState={this.props.actions.setState}
+        />
+        
+        <Text style={ styles.summary }>Snowflake {I18n.t("App.version")}:  {this.props.deviceVersion}</Text>
       </View>
     );
   }

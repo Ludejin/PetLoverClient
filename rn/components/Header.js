@@ -2,17 +2,17 @@
 * # Header.js
 *
  * This component initially displays a image. But when clicked, things
- * get interesting. 
+ * get interesting.
  *
  * On the initial display after being clicked, the
  * textinput will display the current ```state``` of the application.
  *
  * The button will be enabled and if clicked, whatever state is now
  * contained in the textinput will be processed and the application
- * will be restored to that state. 
+ * will be restored to that state.
  *
  * By pasting in a previous state, the application will reset to that
- * state  
+ * state
  *
  * When the mark image is clicked, it is just toggled to display or hide.
 */
@@ -58,7 +58,7 @@ var styles = StyleSheet.create({
     height:100,
     width: 100
   }
-  
+
 
 });
 
@@ -128,7 +128,7 @@ var Header = React.createClass({
    *
    * When the value of the input changes, call ```_onChangeText```
    *
-   * When the 'Update State' button is pressed, we're off to the 
+   * When the 'Update State' button is pressed, we're off to the
    * races with Hot Loading...just call the
    * ```_updateStateButtonPress``` and away we go...
    *
@@ -137,11 +137,11 @@ var Header = React.createClass({
     let displayText;
     if (this.props.showState) {
       displayText = JSON.stringify(this.props.currentState);
-      
+
      console.log(displayText);
 
     }
-    
+
 
 
     return (
@@ -151,38 +151,38 @@ var Header = React.createClass({
           <TouchableHighlight onPress={this._onPressMark}>
 
             <Image style={styles.mark}
-                   source={require('../images/Snowflake.png')}
+              source={require('../images/Snowflake.png')}
             />
           </TouchableHighlight>
           {this.props.isFetching ?
-           <ActivityIndicator    animating={true}      size="large"   />
-           :
-           null
+            <ActivityIndicator    animating={true}      size="large"   />
+            :
+            null
           }
 
 
         </View>
         {this.props.showState ?
-         <View style={styles.container}>
-           <Text>{I18n.t("Header.current_state")} ({I18n.t("Header.see_console")})</Text>
-           <TextInput style={{height: 100, borderColor: 'gray', borderWidth: 1}}
-                      value={displayText}
-                      editable={true}
-                      multiline={true}
-                      onChangeText={(text) => this._onChangeText(text)}
-                      numberOfLines={20}>
-           </TextInput>
-           <View style={{
-               marginTop: 10
-             }}>
-             <FormButton  isDisabled={this.state.isDisabled}
-                          onPress={this._updateStateButtonPress}
-                          buttonText={I18n.t('Header.update_state')}>
-             </FormButton>
-             
-           </View>
-         </View>
-         :
+          <View style={styles.container}>
+            <Text>{I18n.t("Header.current_state")} ({I18n.t("Header.see_console")})</Text>
+            <TextInput style={{height: 100, borderColor: 'gray', borderWidth: 1}}
+              value={displayText}
+              editable={true}
+              multiline={true}
+              onChangeText={(text) => this._onChangeText(text)}
+              numberOfLines={20}>
+            </TextInput>
+            <View style={{
+              marginTop: 10
+            }}>
+              <FormButton  isDisabled={this.state.isDisabled}
+                onPress={this._updateStateButtonPress}
+                buttonText={I18n.t('Header.update_state')}>
+              </FormButton>
+              
+            </View>
+          </View>
+          :
          null}
       </View>
     );

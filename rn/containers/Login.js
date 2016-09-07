@@ -82,14 +82,14 @@ let Login = React.createClass({
 
     return(
       <LoginRender
-          formType={ LOGIN }
-          loginButtonText={ loginButtonText }
-          onButtonPress={ onButtonPress }
-          displayPasswordCheckbox={ true }
-          leftMessageType={ REGISTER }
-          rightMessageType={ FORGOT_PASSWORD }
-          auth={ this.props.auth }
-          global={ this.props.global }
+        formType={ LOGIN }
+        loginButtonText={ loginButtonText }
+        onButtonPress={ onButtonPress }
+        displayPasswordCheckbox={ true }
+        leftMessageType={ REGISTER }
+        rightMessageType={ FORGOT_PASSWORD }
+        auth={ this.props.auth }
+        global={ this.props.global }
       />
     );
   }

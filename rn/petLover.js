@@ -177,16 +177,15 @@ export default function native(platform) {
 
               <Scene key="App"
                 component={App}
-                type="replace"
-                initial={true}/>
+                type="replace"/>
 
               <Scene key="InitialLoginForm"
                 component={Register}
-                type="replace"
-              />
+                type="replace"/>
 
               <Scene key="Login"
                 component={Login}
+                initial={true}
                 type="replace"/>
 
               <Scene key="Register"
