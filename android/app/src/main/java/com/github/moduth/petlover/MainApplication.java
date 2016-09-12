@@ -1,4 +1,4 @@
-package com.mdth.petlover;
+package com.github.moduth.petlover;
 
 import android.app.Application;
 
@@ -8,7 +8,6 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.i18n.reactnativei18n.ReactNativeI18n;
-import com.mdth.petlover.BuildConfig;
 
 import java.util.Arrays;
 import java.util.List;

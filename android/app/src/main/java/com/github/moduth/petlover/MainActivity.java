@@ -1,4 +1,4 @@
-package com.mdth.petlover;
+package com.github.moduth.petlover;
 
 import com.facebook.react.ReactActivity;
 
