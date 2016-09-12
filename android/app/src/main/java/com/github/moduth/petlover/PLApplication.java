@@ -7,12 +7,21 @@ import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
+import com.github.moduth.ext.component.logger.DebugLogger;
+import com.github.moduth.ext.component.logger.Logger;
+import com.github.moduth.ext.component.logger.ReleaseLogger;
+import com.github.moduth.ext.utils.ProcessUtils;
 import com.i18n.reactnativei18n.ReactNativeI18n;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class MainApplication extends Application implements ReactApplication {
+import cn.smssdk.EventHandler;
+import cn.smssdk.SMSSDK;
+
+public class PLApplication extends Application implements ReactApplication {
+
+    private final static String TAG = "PLApplication";
 
     private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
         @Override
@@ -33,5 +42,26 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     public ReactNativeHost getReactNativeHost() {
         return mReactNativeHost;
+    }
+
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        // 如果不是当前主进程,就不注册了.
+        if(!ProcessUtils.isMainProcess(this)){
+            return ;
+        }
+        initLog();
+
+    }
+
+    private void initLog() {
+        if (BuildConfig.DEBUG) {
+            Logger.init(this, DebugLogger.getInstance());
+//            FLog.setMinimumLoggingLevel(FLog.VERBOSE);
+        } else {
+            Logger.init(this, ReleaseLogger.getInstance());
+        }
     }
 }
