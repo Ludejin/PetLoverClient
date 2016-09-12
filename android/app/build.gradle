@@ -1,6 +1,7 @@
-apply plugin: "com.android.application"
-
-import com.android.build.OutputFile
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'packer'
 
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
@@ -83,33 +84,46 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.mdth.petlover"
-        minSdkVersion 16
-        targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
-        ndk {
-            abiFilters "armeabi-v7a", "x86"
-        }
+        applicationId rootProject.ext.applicationId
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        multiDexEnabled true
+//        ndk {
+//            // 设置支持的SO库架构
+//            abiFilters 'armeabi-v7a', 'x86'//, 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+//        }
     }
+    compileOptions {
+        sourceCompatibility rootProject.ext.javaVersion
+        sourceCompatibility rootProject.ext.javaVersion
+    }
+
+    packagingOptions {
+//        exclude "lib/arm64-v8a/librealm-jni.so"
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+
     splits {
         abi {
+            enable true
             reset()
-            enable enableSeparateBuildPerCPUArchitecture
-            universalApk false  // If true, also generate a universal APK
-            include "armeabi-v7a", "x86"
+            include 'armeabi-v7a'//, 'x86'//, 'armeabi-v7a', 'mips'
+            universalApk false
         }
     }
-    buildTypes {
-        release {
-            minifyEnabled enableProguardInReleaseBuilds
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-        }
-    }
+
+
+
     signingConfigs {
 
         def Properties localProps = new Properties()
@@ -146,32 +160,59 @@ android {
 //            v2SigningEnabled false
         }
     }
-    // applicationVariants are e.g. debug, release
-    applicationVariants.all { variant ->
-        variant.outputs.each { output ->
-            // For each separate APK per architecture, set a unique version code as described here:
-            // http://tools.android.com/tech-docs/new-build-system/user-guide/apk-splits
-            def versionCodes = ["armeabi-v7a":1, "x86":2]
-            def abi = output.getFilter(OutputFile.ABI)
-            if (abi != null) {  // null for the universal-debug, universal-release variants
-                output.versionCodeOverride =
-                        versionCodes.get(abi) * 1048576 + defaultConfig.versionCode
-            }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
         }
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g" //specify the heap size for the dex process
+    }
+    dataBinding {
+        enabled = true
     }
 }
 
 dependencies {
     compile fileTree(dir: "libs", include: ["*.jar"])
-    compile "com.android.support:appcompat-v7:23.0.1"
-    compile "com.facebook.react:react-native:+"  // From node_modules
+    compile 'com.facebook.rebound:rebound:0.3.8'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.tencent.bugly:crashreport:2.2.0.0'
+    apt 'com.google.guava:guava:19.0'
+    apt rootProject.ext.libDaggerCompiler
+    compile rootProject.ext.libDagger
+    compile rootProject.ext.libRxJava
+    compile rootProject.ext.libRxAndroid
+    compile rootProject.ext.libRxBinding
+    compile rootProject.ext.libFresco
+    compile rootProject.ext.libFrescoImagePipeline
+    provided rootProject.ext.libJavaxAnnotation
+    //    compile rootProject.ext.libSupportAppcompat
+    //    compile rootProject.ext.libSupportV4
+    compile rootProject.ext.libQiniuAndroidSdk
+    //    debugCompile rootProject.ext.libLeakCanary
+    //    releaseCompile rootProject.ext.releaseDependencies.leakCanary
+    debugCompile rootProject.ext.libBlockCanary
+    releaseCompile rootProject.ext.libBlockCanaryRelease
+    compile rootProject.ext.libPhotoView
+    compile 'com.bigkoo:convenientbanner:2.0.5'
+    compile 'com.github.markzhai:databinding-rv-adapter:1.0.1'
+    compile 'com.facebook.react:react-native:+'
+    compile 'com.mcxiaoke.gradle:packer-helper:1.0.7'
     compile project(':react-native-i18n')
     compile project(':react-native-simpledialog-android')
 }
 
 // Run this once to be able to run the application with BUCK
 // puts all compile dependencies into folder libs for BUCK to use
-task copyDownloadableDepsToLibs(type: Copy) {
-  from configurations.compile
-  into 'libs'
-}
+//task copyDownloadableDepsToLibs(type: Copy) {
+//  from configurations.compile
+//  into 'libs'
+//}
