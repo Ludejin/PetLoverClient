@@ -1,7 +1,7 @@
 /*
  * The GPL License (GPL)
  *
- * Copyright (c) 2016 MarkZhai (http://zhaiyifan.cn)
+ * Copyright (c) 2016 Moduth (https://github.com/moduth)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,21 +22,7 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.ext.component.thread;
+package com.github.moduth.petlover;
 
-/**
- * Future for job submitted into {@link ThreadPool}.
- *
- * @param <T>
- */
-public interface Future<T> {
-    void cancel();
-
-    boolean isCancelled();
-
-    boolean isDone();
-
-    T get();
-
-    void waitDone();
+public class RegisterActivity {
 }

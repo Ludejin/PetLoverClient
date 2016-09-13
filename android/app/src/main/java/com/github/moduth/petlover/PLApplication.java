@@ -19,9 +19,9 @@ import java.util.List;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
-public class PLApplication extends Application implements ReactApplication {
+public class PlApplication extends Application implements ReactApplication {
 
-    private final static String TAG = "PLApplication";
+    private final static String TAG = "PlApplication";
 
     private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
         @Override
