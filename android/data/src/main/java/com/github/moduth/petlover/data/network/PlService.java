@@ -50,11 +50,11 @@ public class PlService {
 
     private static final String TAG = "MrService";
 
-    private static final String API_DEV_URL = "https://qa.api.staylife.cn";
-    private static final String API_PRODUCT_URL = "https://api.staylife.cn";
+    private static final String API_DEV_URL = "http://";
+    private static final String API_PRODUCT_URL = "http://";
 
-    private static final String WEB_DEV_URL = "http://qa.wp.staylife.cn/";
-    private static final String WEB_PRODUCT_URL = "http://wp.staylife.cn/";
+    private static final String WEB_DEV_URL = "http://";
+    private static final String WEB_PRODUCT_URL = "http://";
 
     private static final String KEY_ENVIRONMENT = "api_environment";
 
