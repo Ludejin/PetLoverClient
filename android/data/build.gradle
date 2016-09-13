@@ -30,7 +30,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-
+    compile project(':domain')
     compile project(':lib_ext')
 
     compile rootProject.ext.libRxAndroid

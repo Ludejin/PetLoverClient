@@ -62,17 +62,6 @@ public final class FileUtils {
     public final static FileComparator SIMPLE_COMPARATOR = (lhs, rhs) ->
             (lhs.length() == rhs.length()) && (lhs.lastModified() == rhs.lastModified());
     /**
-     * Strict file comparator which depends on file md5.
-     */
-    public final static FileComparator STRICT_COMPARATOR = (lhs, rhs) -> {
-        String lhsMd5 = SecurityUtils.digest(lhs);
-        if (lhsMd5 == null) {
-            return false;
-        }
-        String rhsMd5 = SecurityUtils.digest(rhs);
-        return lhsMd5.equals(rhsMd5);
-    };
-    /**
      * Simple asset file comparator which only depends on asset file length.
      */
     public final static AssetFileComparator SIMPLE_ASSET_COMPARATOR =
