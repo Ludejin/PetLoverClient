@@ -1,12 +1,14 @@
 rootProject.name = 'PetLoverClient'
 
-include ':app'
+include ':app', ':lib_uiframework'
 include ':domain'
 include ':data'
 
 include ':lib_ext'
 project(':lib_ext').projectDir = new File('sdk/lib_ext')
 
+include ':lib_uikit'
+project(':lib_uikit').projectDir = new File('sdk/lib_uikit')
 
 include ':react-native-i18n', ':react-native-simpledialog-android'
 project(':react-native-simpledialog-android').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-simpledialog-android/android')

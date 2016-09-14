@@ -22,28 +22,23 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package ru.noties.scrollable;
 
-import com.google.gson.annotations.SerializedName;
+/**
+ * This interface might be used to dynamically compute close-up animation time of a {@link ScrollableLayout}
+ *
+ * @see ScrollableLayout#setCloseUpIdleAnimationTime(CloseUpIdleAnimationTime)
+ * @see SimpleCloseUpIdleAnimationTime
+ * Created by Dimitry Ivanov on 22.05.2015.
+ */
+public interface CloseUpIdleAnimationTime {
 
-public class TokenEntity extends PlResponse {
-
-    @SerializedName("TOKEN")
-    private String token;
-
-    @SerializedName("uid")
-    private String uid;
-
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public String getUid() {
-        return uid;
-    }
+    /**
+     * @param layout {@link ScrollableLayout}
+     * @param nowY   current scroll y of the *layout*
+     * @param endY   scroll y value to which *layout* would scroll to
+     * @param maxY   current max scroll y value of the *layout*
+     * @return animation duration for a close-up animation
+     */
+    long compute(ScrollableLayout layout, int nowY, int endY, int maxY);
 }

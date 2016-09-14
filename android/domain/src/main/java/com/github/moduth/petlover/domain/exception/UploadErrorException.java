@@ -1,7 +1,7 @@
 /*
  * The GPL License (GPL)
  *
- * Copyright (c) 2016 Moduth (https://github.com/moduth)
+ * Copyright (c) 2016 MarkZhai (http://zhaiyifan.cn)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,28 +22,11 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package com.github.moduth.petlover.domain.exception;
 
-import com.google.gson.annotations.SerializedName;
-
-public class TokenEntity extends PlResponse {
-
-    @SerializedName("TOKEN")
-    private String token;
-
-    @SerializedName("uid")
-    private String uid;
-
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public String getUid() {
-        return uid;
-    }
+/**
+ * @author markzhai on 16/7/6
+ * @version 1.3.0
+ */
+public class UploadErrorException extends Exception {
 }

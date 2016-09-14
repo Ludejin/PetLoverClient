@@ -21,29 +21,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.github.moduth.petlover.domain.executor;
 
-package com.github.moduth.petlover.domain.model;
 
-import com.google.gson.annotations.SerializedName;
+import com.github.moduth.petlover.domain.interactor.UseCase;
 
-public class TokenEntity extends PlResponse {
+import java.util.concurrent.Executor;
 
-    @SerializedName("TOKEN")
-    private String token;
+/**
+ * Executor implementation can be based on different frameworks or techniques of asynchronous
+ * execution, but every implementation will execute the
+ * {@link UseCase} out of the UI thread.
+ */
+public interface ThreadExecutor extends Executor {
 
-    @SerializedName("uid")
-    private String uid;
-
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public String getUid() {
-        return uid;
-    }
 }

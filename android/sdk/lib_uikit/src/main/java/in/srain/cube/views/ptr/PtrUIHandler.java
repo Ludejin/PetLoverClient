@@ -22,28 +22,38 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package in.srain.cube.views.ptr;
 
-import com.google.gson.annotations.SerializedName;
+import in.srain.cube.views.ptr.indicator.PtrIndicator;
 
-public class TokenEntity extends PlResponse {
+/**
+ *
+ */
+public interface PtrUIHandler {
 
-    @SerializedName("TOKEN")
-    private String token;
+    /**
+     * When the content view has reached top and refresh has been completed, view will be reset.
+     *
+     * @param frame
+     */
+    public void onUIReset(PtrFrameLayout frame);
 
-    @SerializedName("uid")
-    private String uid;
+    /**
+     * prepare for loading
+     *
+     * @param frame
+     */
+    public void onUIRefreshPrepare(PtrFrameLayout frame);
 
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
-    }
+    /**
+     * perform refreshing UI
+     */
+    public void onUIRefreshBegin(PtrFrameLayout frame);
 
-    public String getToken() {
-        return token;
-    }
+    /**
+     * perform UI after refresh
+     */
+    public void onUIRefreshComplete(PtrFrameLayout frame);
 
-    public String getUid() {
-        return uid;
-    }
+    public void onUIPositionChange(PtrFrameLayout frame, boolean isUnderTouch, byte status, PtrIndicator ptrIndicator);
 }

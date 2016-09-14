@@ -22,28 +22,23 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package in.srain.cube.views.ptr;
 
-import com.google.gson.annotations.SerializedName;
+import android.view.View;
 
-public class TokenEntity extends PlResponse {
+public interface PtrHandler {
 
-    @SerializedName("TOKEN")
-    private String token;
+    /**
+     * Check can do refresh or not. For example the content is empty or the first child is in view.
+     * <p/>
+     * {@link in.srain.cube.views.ptr.PtrDefaultHandler#checkContentCanBePulledDown}
+     */
+    public boolean checkCanDoRefresh(final PtrFrameLayout frame, final View content, final View header);
 
-    @SerializedName("uid")
-    private String uid;
-
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public String getUid() {
-        return uid;
-    }
+    /**
+     * When refresh begin
+     *
+     * @param frame
+     */
+    public void onRefreshBegin(final PtrFrameLayout frame);
 }

@@ -22,28 +22,15 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package ru.noties.scrollable;
 
-import com.google.gson.annotations.SerializedName;
+/**
+ * Created by Dimitry Ivanov (mail@dimitryivanov.ru) on 28.03.2015.
+ */
+public interface CanScrollVerticallyDelegate {
 
-public class TokenEntity extends PlResponse {
-
-    @SerializedName("TOKEN")
-    private String token;
-
-    @SerializedName("uid")
-    private String uid;
-
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public String getUid() {
-        return uid;
-    }
+    /**
+     * @see android.view.View#canScrollVertically(int)
+     */
+    boolean canScrollVertically(int direction);
 }

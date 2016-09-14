@@ -22,28 +22,30 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package com.github.moduth.petlover;
 
-import com.google.gson.annotations.SerializedName;
 
-public class TokenEntity extends PlResponse {
+import com.github.moduth.petlover.domain.executor.PostExecutionThread;
 
-    @SerializedName("TOKEN")
-    private String token;
+import javax.inject.Inject;
+import javax.inject.Singleton;
 
-    @SerializedName("uid")
-    private String uid;
+import rx.Scheduler;
+import rx.android.schedulers.AndroidSchedulers;
 
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
+/**
+ * MainThread (UI Thread) implementation based on a {@link Scheduler}
+ * which will execute actions on the Android UI thread
+ */
+@Singleton
+public class UIThread implements PostExecutionThread {
+
+    @Inject
+    public UIThread() {
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public String getUid() {
-        return uid;
+    @Override
+    public Scheduler getScheduler() {
+        return AndroidSchedulers.mainThread();
     }
 }

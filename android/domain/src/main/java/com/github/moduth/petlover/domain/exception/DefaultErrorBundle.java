@@ -22,28 +22,31 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package com.github.moduth.petlover.domain.exception;
 
-import com.google.gson.annotations.SerializedName;
+/**
+ * Wrapper around Exceptions used to manage default errors.
+ *
+ * @author yifan.zhai
+ * @version 1.0.0
+ */
+public class DefaultErrorBundle implements ErrorBundle {
 
-public class TokenEntity extends PlResponse {
+    private static final String DEFAULT_ERROR_MSG = "Unknown error";
 
-    @SerializedName("TOKEN")
-    private String token;
+    private final Exception exception;
 
-    @SerializedName("uid")
-    private String uid;
-
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
+    public DefaultErrorBundle(Exception exception) {
+        this.exception = exception;
     }
 
-    public String getToken() {
-        return token;
+    @Override
+    public Exception getException() {
+        return exception;
     }
 
-    public String getUid() {
-        return uid;
+    @Override
+    public String getErrorMessage() {
+        return (exception != null) ? this.exception.getMessage() : DEFAULT_ERROR_MSG;
     }
 }

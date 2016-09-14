@@ -22,28 +22,35 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package com.github.moduth.petlover.internal.di.components;
 
-import com.google.gson.annotations.SerializedName;
+import android.content.Context;
 
-public class TokenEntity extends PlResponse {
 
-    @SerializedName("TOKEN")
-    private String token;
+import com.github.moduth.petlover.domain.executor.PostExecutionThread;
+import com.github.moduth.petlover.domain.executor.ThreadExecutor;
+import com.github.moduth.petlover.internal.di.module.ApplicationModule;
+import com.github.moduth.petlover.usersystem.UserSystem;
 
-    @SerializedName("uid")
-    private String uid;
+import javax.inject.Singleton;
 
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
-    }
+import dagger.Component;
 
-    public String getToken() {
-        return token;
-    }
+@Singleton
+@Component(modules = {ApplicationModule.class})
+public interface ApplicationComponent {
 
-    public String getUid() {
-        return uid;
-    }
+
+    // Exposed to sub-graphs.
+    Context context();
+
+
+    UserSystem userSystem();
+
+    ThreadExecutor threadExecutor();
+
+    PostExecutionThread postExecutionThread();
+
+
+
 }

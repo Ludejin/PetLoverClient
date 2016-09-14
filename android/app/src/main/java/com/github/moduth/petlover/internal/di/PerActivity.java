@@ -22,28 +22,20 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package com.github.moduth.petlover.internal.di;
 
-import com.google.gson.annotations.SerializedName;
+import java.lang.annotation.Retention;
 
-public class TokenEntity extends PlResponse {
+import javax.inject.Scope;
 
-    @SerializedName("TOKEN")
-    private String token;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-    @SerializedName("uid")
-    private String uid;
-
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public String getUid() {
-        return uid;
-    }
+/**
+ * A scoping annotation to permit objects whose lifetime should
+ * conform to the life of the activity to be memorized in the
+ * correct component.
+ */
+@Scope
+@Retention(RUNTIME)
+public @interface PerActivity {
 }

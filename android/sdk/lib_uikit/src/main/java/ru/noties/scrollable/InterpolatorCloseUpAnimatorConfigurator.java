@@ -22,28 +22,27 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package ru.noties.scrollable;
 
-import com.google.gson.annotations.SerializedName;
+import android.animation.ObjectAnimator;
+import android.view.animation.Interpolator;
 
-public class TokenEntity extends PlResponse {
+/**
+ * Created by Dimitry Ivanov on 23.05.2015.
+ */
+public class InterpolatorCloseUpAnimatorConfigurator implements CloseUpAnimatorConfigurator {
 
-    @SerializedName("TOKEN")
-    private String token;
+    private final Interpolator mInterpolator;
 
-    @SerializedName("uid")
-    private String uid;
-
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
+    public InterpolatorCloseUpAnimatorConfigurator(Interpolator interpolator) {
+        this.mInterpolator = interpolator;
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public String getUid() {
-        return uid;
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void configure(ObjectAnimator animator) {
+        animator.setInterpolator(mInterpolator);
     }
 }

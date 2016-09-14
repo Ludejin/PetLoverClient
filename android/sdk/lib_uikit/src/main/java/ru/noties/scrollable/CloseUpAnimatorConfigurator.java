@@ -22,28 +22,23 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package ru.noties.scrollable;
 
-import com.google.gson.annotations.SerializedName;
+import android.animation.ObjectAnimator;
 
-public class TokenEntity extends PlResponse {
+/**
+ * This interface might be used to customize {@link ObjectAnimator} behavior during close-up animation
+ *
+ * @see ObjectAnimator
+ * @see InterpolatorCloseUpAnimatorConfigurator
+ * Created by Dimitry Ivanov on 22.05.2015.
+ */
+public interface CloseUpAnimatorConfigurator {
 
-    @SerializedName("TOKEN")
-    private String token;
-
-    @SerializedName("uid")
-    private String uid;
-
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public String getUid() {
-        return uid;
-    }
+    /**
+     * Note that {@link ObjectAnimator#setDuration(long)} would erase current value set by {@link CloseUpIdleAnimationTime} if any present
+     *
+     * @param animator current {@link ObjectAnimator} object to animate close-up animation of a {@link ScrollableLayout}
+     */
+    void configure(ObjectAnimator animator);
 }

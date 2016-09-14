@@ -22,28 +22,24 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package com.github.moduth.uikit.loadmore;
 
-import com.google.gson.annotations.SerializedName;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class TokenEntity extends PlResponse {
+/**
+ * Footer item
+ *
+ * @author cjj on 2016/1/30.
+ */
+public abstract class FootItem {
 
-    @SerializedName("TOKEN")
-    private String token;
+    public CharSequence loadingText;
+    public CharSequence endText;
+    public CharSequence pullToLoadText;
 
-    @SerializedName("uid")
-    private String uid;
+    public abstract View onCreateView(ViewGroup parent);
 
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
-    }
+    public abstract void onBindData(View view, int state);
 
-    public String getToken() {
-        return token;
-    }
-
-    public String getUid() {
-        return uid;
-    }
 }

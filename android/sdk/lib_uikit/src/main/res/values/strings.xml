@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">LibUiKit</string>
+
+    <string name="load_failed">load failed\nClick me to reload</string>
+    <string name="load_not_data">data empty</string>
+    <string name="loading">loading</string>
+</resources>

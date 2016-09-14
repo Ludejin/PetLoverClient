@@ -182,6 +182,7 @@ repositories{
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':data')
+    compile project(':domain')
     compile name:'SMSSDK-2.1.1',ext:'aar'
     compile 'com.facebook.rebound:rebound:0.3.8'
     compile 'com.android.support:multidex:1.0.1'

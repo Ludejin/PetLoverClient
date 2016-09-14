@@ -22,28 +22,52 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package com.github.moduth.petlover.internal.di.module;
 
-import com.google.gson.annotations.SerializedName;
+import android.content.Context;
 
-public class TokenEntity extends PlResponse {
 
-    @SerializedName("TOKEN")
-    private String token;
+import com.github.moduth.petlover.PlApplication;
+import com.github.moduth.petlover.UIThread;
+import com.github.moduth.petlover.data.executor.JobExecutor;
+import com.github.moduth.petlover.domain.executor.PostExecutionThread;
+import com.github.moduth.petlover.domain.executor.ThreadExecutor;
 
-    @SerializedName("uid")
-    private String uid;
+import javax.inject.Singleton;
 
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
+import dagger.Module;
+import dagger.Provides;
+
+/**
+ * Dagger module that provides objects which will live during the application lifecycle.
+ */
+@Module
+public class ApplicationModule {
+
+    private final PlApplication mApplication;
+
+    public ApplicationModule(PlApplication application) {
+        mApplication = application;
     }
 
-    public String getToken() {
-        return token;
+    @Provides
+    @Singleton
+    Context provideApplicationContext() {
+        return mApplication;
     }
 
-    public String getUid() {
-        return uid;
+
+    @Provides
+    @Singleton
+    ThreadExecutor provideThreadExecutor(JobExecutor jobExecutor) {
+        return jobExecutor;
     }
+
+    @Provides
+    @Singleton
+    PostExecutionThread providePostExecutionThread(UIThread uiThread) {
+        return uiThread;
+    }
+
+
 }

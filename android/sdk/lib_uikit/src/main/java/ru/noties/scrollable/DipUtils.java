@@ -22,28 +22,22 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package ru.noties.scrollable;
 
-import com.google.gson.annotations.SerializedName;
+import android.content.Context;
+import android.content.res.Resources;
 
-public class TokenEntity extends PlResponse {
+/**
+ * Created by Dimitry Ivanov on 23.05.2015.
+ */
+class DipUtils {
 
-    @SerializedName("TOKEN")
-    private String token;
-
-    @SerializedName("uid")
-    private String uid;
-
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
+    private DipUtils() {
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public String getUid() {
-        return uid;
+    static int dipToPx(Context context, int dip) {
+        final Resources r = context.getResources();
+        final float scale = r.getDisplayMetrics().density;
+        return (int) (dip * scale + .5F);
     }
 }

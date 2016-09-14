@@ -22,28 +22,31 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package ru.noties.scrollable;
 
-import com.google.gson.annotations.SerializedName;
+/**
+ * Default implementation of the {@link CloseUpAlgorithm}
+ * With this implementation {@link ScrollableLayout} would have only two states - collapsed &amp; expanded
+ *
+ * @see ScrollableLayout#setCloseUpAlgorithm(CloseUpAlgorithm)
+ * Created by Dimitry Ivanov on 23.05.2015.
+ */
+public class DefaultCloseUpAlgorithm implements CloseUpAlgorithm {
 
-public class TokenEntity extends PlResponse {
-
-    @SerializedName("TOKEN")
-    private String token;
-
-    @SerializedName("uid")
-    private String uid;
-
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int getFlingFinalY(ScrollableLayout layout, boolean isScrollingBottom, int nowY, int suggestedY, int maxY) {
+        return isScrollingBottom ? 0 : maxY;
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public String getUid() {
-        return uid;
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int getIdleFinalY(ScrollableLayout layout, int nowY, int maxY) {
+        final boolean shouldScrollToTop = nowY < (maxY / 2);
+        return shouldScrollToTop ? 0 : maxY;
     }
 }

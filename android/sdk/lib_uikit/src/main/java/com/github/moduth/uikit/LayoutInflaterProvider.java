@@ -22,28 +22,16 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package com.github.moduth.uikit;
 
-import com.google.gson.annotations.SerializedName;
+import android.view.LayoutInflater;
 
-public class TokenEntity extends PlResponse {
-
-    @SerializedName("TOKEN")
-    private String token;
-
-    @SerializedName("uid")
-    private String uid;
-
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public String getUid() {
-        return uid;
-    }
+public interface  LayoutInflaterProvider {
+    /**
+     * 请求LayoutInflater
+     *
+     * @return LayoutInflater
+     */
+    LayoutInflater requestLayoutInflater();
 }
+

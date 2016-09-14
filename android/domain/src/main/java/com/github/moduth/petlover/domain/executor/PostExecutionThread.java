@@ -22,28 +22,19 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package com.github.moduth.petlover.domain.executor;
 
-import com.google.gson.annotations.SerializedName;
+import rx.Scheduler;
 
-public class TokenEntity extends PlResponse {
-
-    @SerializedName("TOKEN")
-    private String token;
-
-    @SerializedName("uid")
-    private String uid;
-
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public String getUid() {
-        return uid;
-    }
+/**
+ * Thread abstraction created to change the execution context from any thread to any other thread.
+ * Useful to encapsulate a UI Thread for example, since some job will be done in background, an
+ * implementation of this interface will change context and update the UI.
+ */
+public interface PostExecutionThread {
+    /**
+     *
+     * @return Scheduler
+     */
+    Scheduler getScheduler();
 }

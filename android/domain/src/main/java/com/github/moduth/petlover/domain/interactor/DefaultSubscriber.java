@@ -22,28 +22,26 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package com.github.moduth.petlover.domain.interactor;
 
-import com.google.gson.annotations.SerializedName;
+import rx.Subscriber;
 
-public class TokenEntity extends PlResponse {
-
-    @SerializedName("TOKEN")
-    private String token;
-
-    @SerializedName("uid")
-    private String uid;
-
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
+/**
+ * Default subscriber base class to be used whenever you want default error handling.
+ */
+public class DefaultSubscriber<T> extends Subscriber<T> {
+    @Override
+    public void onCompleted() {
+        // no-op by default.
     }
 
-    public String getToken() {
-        return token;
+    @Override
+    public void onError(Throwable e) {
+        // no-op by default.
     }
 
-    public String getUid() {
-        return uid;
+    @Override
+    public void onNext(T t) {
+        // no-op by default.
     }
 }

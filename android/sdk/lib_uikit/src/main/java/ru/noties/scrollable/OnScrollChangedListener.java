@@ -22,28 +22,21 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package ru.noties.scrollable;
 
-import com.google.gson.annotations.SerializedName;
+/**
+ * Created by Dimitry Ivanov (mail@dimitryivanov.ru) on 28.03.2015.
+ */
+public interface OnScrollChangedListener {
 
-public class TokenEntity extends PlResponse {
-
-    @SerializedName("TOKEN")
-    private String token;
-
-    @SerializedName("uid")
-    private String uid;
-
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public String getUid() {
-        return uid;
-    }
+    /**
+     * This method will be invoked when scroll state
+     * of {@link ru.noties.scrollable.ScrollableLayout} has changed.
+     *
+     * @param y    current scroll y
+     * @param oldY previous scroll y
+     * @param maxY maximum scroll y (helpful for calculating scroll ratio for e.g. for alpha to be applied)
+     * @see ru.noties.scrollable.ScrollableLayout#addOnScrollChangedListener(OnScrollChangedListener)
+     */
+    void onScrollChanged(int y, int oldY, int maxY);
 }

@@ -22,28 +22,32 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package ru.noties.scrollable;
 
-import com.google.gson.annotations.SerializedName;
+import android.os.Build;
+import android.view.View;
+import android.view.ViewTreeObserver;
 
-public class TokenEntity extends PlResponse {
+/**
+ * Created by Dimitry Ivanov on 13.04.2016.
+ */
+class ViewUtils {
 
-    @SerializedName("TOKEN")
-    private String token;
-
-    @SerializedName("uid")
-    private String uid;
-
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
+    private ViewUtils() {
     }
 
-    public String getToken() {
-        return token;
-    }
+    static void removeGlobalLayoutListener(View view, ViewTreeObserver.OnGlobalLayoutListener onGlobalLayoutListener) {
 
-    public String getUid() {
-        return uid;
+        final ViewTreeObserver observer = view.getViewTreeObserver();
+        if (!observer.isAlive()) {
+            return;
+        }
+
+        if (Build.VERSION.SDK_INT >= 16) {
+            observer.removeOnGlobalLayoutListener(onGlobalLayoutListener);
+        } else {
+            //noinspection deprecation
+            observer.removeGlobalOnLayoutListener(onGlobalLayoutListener);
+        }
     }
 }

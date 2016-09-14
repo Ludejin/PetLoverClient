@@ -22,28 +22,43 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package ru.noties.scrollable;
 
-import com.google.gson.annotations.SerializedName;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 
-public class TokenEntity extends PlResponse {
+/**
+ * Created by Dimitry Ivanov (mail@dimitryivanov.ru) on 29.03.2015.
+ */
+public abstract class GestureListenerAdapter implements GestureDetector.OnGestureListener {
 
-    @SerializedName("TOKEN")
-    private String token;
-
-    @SerializedName("uid")
-    private String uid;
-
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
+    @Override
+    public boolean onDown(MotionEvent e) {
+        return false;
     }
 
-    public String getToken() {
-        return token;
+    @Override
+    public void onShowPress(MotionEvent e) {
+
     }
 
-    public String getUid() {
-        return uid;
+    @Override
+    public boolean onSingleTapUp(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent e) {
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        return false;
     }
 }

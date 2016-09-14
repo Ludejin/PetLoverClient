@@ -22,28 +22,26 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package com.github.moduth.petlover.internal.di.components;
 
-import com.google.gson.annotations.SerializedName;
+import android.app.Activity;
 
-public class TokenEntity extends PlResponse {
 
-    @SerializedName("TOKEN")
-    private String token;
+import com.github.moduth.petlover.internal.di.PerActivity;
+import com.github.moduth.petlover.internal.di.module.ActivityModule;
 
-    @SerializedName("uid")
-    private String uid;
+import dagger.Component;
 
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public String getUid() {
-        return uid;
-    }
+/**
+ * A base component upon which fragment's components may depend.
+ * Activity-level components should extend this component.
+ * <p>
+ * Subtypes of ActivityComponent should be decorated with annotation:
+ * {@link PerActivity}
+ */
+@PerActivity
+@Component(dependencies = ApplicationComponent.class, modules = ActivityModule.class)
+public interface ActivityComponent {
+    // Exposed to sub-graphs.
+    Activity activity();
 }

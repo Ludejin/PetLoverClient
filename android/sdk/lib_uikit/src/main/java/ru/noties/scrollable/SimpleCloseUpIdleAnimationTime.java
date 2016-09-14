@@ -22,28 +22,28 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package ru.noties.scrollable;
 
-import com.google.gson.annotations.SerializedName;
+/**
+ * Created by Dimitry Ivanov on 23.05.2015.
+ */
+public class SimpleCloseUpIdleAnimationTime implements CloseUpIdleAnimationTime {
 
-public class TokenEntity extends PlResponse {
+    private final long mDuration;
 
-    @SerializedName("TOKEN")
-    private String token;
-
-    @SerializedName("uid")
-    private String uid;
-
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
+    public SimpleCloseUpIdleAnimationTime(long duration) {
+        this.mDuration = duration;
     }
 
-    public String getToken() {
-        return token;
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public long compute(ScrollableLayout layout, int nowY, int endY, int maxY) {
+        return mDuration;
     }
 
-    public String getUid() {
-        return uid;
+    public long getDuration() {
+        return mDuration;
     }
 }

@@ -22,28 +22,21 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package me.kaede.tagview.tagview;
 
-import com.google.gson.annotations.SerializedName;
+import android.content.Context;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 
-public class TokenEntity extends PlResponse {
+class Utils {
 
-    @SerializedName("TOKEN")
-    private String token;
-
-    @SerializedName("uid")
-    private String uid;
-
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
+    public static int dpToPx(Context c, float dipValue) {
+        DisplayMetrics metrics = c.getResources().getDisplayMetrics();
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, metrics);
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public String getUid() {
-        return uid;
+    public static int spToPx(Context context, float spValue) {
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, spValue, metrics);
     }
 }

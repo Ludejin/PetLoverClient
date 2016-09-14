@@ -22,28 +22,34 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package com.github.moduth.petlover.internal.di.module;
 
-import com.google.gson.annotations.SerializedName;
+import android.app.Activity;
 
-public class TokenEntity extends PlResponse {
 
-    @SerializedName("TOKEN")
-    private String token;
+import com.github.moduth.petlover.internal.di.PerActivity;
 
-    @SerializedName("uid")
-    private String uid;
+import dagger.Module;
+import dagger.Provides;
 
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
+/**
+ * A module to wrap the Activity state and expose it to the graph.
+ */
+@Module
+public class ActivityModule {
+
+    private final Activity mActivity;
+
+    public ActivityModule(Activity activity) {
+        mActivity = activity;
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public String getUid() {
-        return uid;
+    /**
+     * Expose the activity to dependents in the graph.
+     */
+    @Provides
+    @PerActivity
+    Activity activity() {
+        return mActivity;
     }
 }

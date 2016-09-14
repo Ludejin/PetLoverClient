@@ -1,7 +1,7 @@
 /*
  * The GPL License (GPL)
  *
- * Copyright (c) 2016 Moduth (https://github.com/moduth)
+ * Copyright (c) 2016 MarkZhai (http://zhaiyifan.cn)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,28 +22,40 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+/**
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.github.moduth.petlover.domain.exception;
 
-import com.google.gson.annotations.SerializedName;
+/**
+ * Exception throw by the application when a
+ * search can't return a valid result.
+ */
+public class NotFoundException extends Exception {
 
-public class TokenEntity extends PlResponse {
-
-    @SerializedName("TOKEN")
-    private String token;
-
-    @SerializedName("uid")
-    private String uid;
-
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
+    public NotFoundException() {
+        super();
     }
 
-    public String getToken() {
-        return token;
+    public NotFoundException(final String message) {
+        super(message);
     }
 
-    public String getUid() {
-        return uid;
+    public NotFoundException(final String message, final Throwable cause) {
+        super(message, cause);
+    }
+
+    public NotFoundException(final Throwable cause) {
+        super(cause);
     }
 }

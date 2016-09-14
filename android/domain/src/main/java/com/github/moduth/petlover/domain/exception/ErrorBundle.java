@@ -22,28 +22,16 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package com.github.moduth.petlover.domain.exception;
 
-import com.google.gson.annotations.SerializedName;
+/**
+ * Interface to represent a wrapper around an {@link Exception} to manage errors.
+ *
+ * @author yifan.zhai
+ * @version 1.0.0
+ */
+public interface ErrorBundle {
+    Exception getException();
 
-public class TokenEntity extends PlResponse {
-
-    @SerializedName("TOKEN")
-    private String token;
-
-    @SerializedName("uid")
-    private String uid;
-
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public String getUid() {
-        return uid;
-    }
+    String getErrorMessage();
 }

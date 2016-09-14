@@ -22,28 +22,13 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package com.github.moduth.uikit.loadmore;
 
-import com.google.gson.annotations.SerializedName;
-
-public class TokenEntity extends PlResponse {
-
-    @SerializedName("TOKEN")
-    private String token;
-
-    @SerializedName("uid")
-    private String uid;
-
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public String getUid() {
-        return uid;
-    }
+/**
+ * Load more interface
+ *
+ * @author cjj
+ */
+public interface OnLoadMoreListener {
+    void onLoadMore();
 }

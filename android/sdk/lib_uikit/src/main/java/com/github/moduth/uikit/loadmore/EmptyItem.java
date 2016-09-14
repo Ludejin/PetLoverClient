@@ -22,28 +22,22 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.model;
+package com.github.moduth.uikit.loadmore;
 
-import com.google.gson.annotations.SerializedName;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class TokenEntity extends PlResponse {
+/**
+ * 没数据时候的默认View
+ *
+ * @author zzz40500 on 16/1/31.
+ */
+public abstract class EmptyItem {
 
-    @SerializedName("TOKEN")
-    private String token;
+    CharSequence mEmptyText;
+    int mEmptyIconRes = -1;
 
-    @SerializedName("uid")
-    private String uid;
+    abstract View onCreateView(ViewGroup parent);
 
-    public TokenEntity(String token, String uid) {
-        this.token = token;
-        this.uid = uid;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public String getUid() {
-        return uid;
-    }
+    abstract void onBindData(View view);
 }
