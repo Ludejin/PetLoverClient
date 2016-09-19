@@ -5,4 +5,19 @@
         <!-- Customize your theme here. -->
     </style>
 
+
+    <style name="FormEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/login_form_edit_text_height</item>
+        <item name="android:layout_marginLeft">@dimen/login_form_horizontal_margin</item>
+        <item name="android:layout_marginRight">@dimen/login_form_horizontal_margin</item>
+        <item name="android:paddingRight">6dp</item>
+        <item name="android:textSize">@dimen/form_text_size</item>
+        <item name="android:textColorHint">@color/textColorHint</item>
+        <item name="android:background">@drawable/login_form_background</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/textColorForm</item>
+    </style>
+
 </resources>

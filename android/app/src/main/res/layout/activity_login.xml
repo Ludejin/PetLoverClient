@@ -3,9 +3,17 @@
 
 
     <LinearLayout
+        android:background="@color/whiteBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+
+        <com.github.moduth.uikit.ClearEditText
+            style="@style/FormEditText"
+            android:hint="@string/login_phone"
+            />
+
 
     </LinearLayout>
 

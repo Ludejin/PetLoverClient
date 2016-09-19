@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ The GPL License (GPL)
+  ~
+  ~ Copyright (c) 2016 Moduth (https://github.com/moduth)
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<resources>
+    <!-- your app branding color for the app bar -->
+    <color name="colorPrimary">#C69986</color>
+
+    <!-- darker variant for the status bar and contextual app bars -->
+    <color name="colorPrimaryDark">#C69986</color>
+
+    <!-- theme UI controls like checkboxes and text fields -->
+    <!--<color name="colorAccent">#ff466d</color>-->
+    <color name="colorAccent">#C69986</color>
+
+    <color name="windowBackground">#F2EFF0</color>
+    <!-- 标题栏文字 -->
+    <color name="textColorPrimary">#1D1F20</color>
+
+    <color name="whiteBackground">#FFFFFF</color>
+
+    <!-- 用于所有浅灰色背景 -->
+
+    <!-- 功能按钮背景 -->
+    <color name="actionButtonColor">#4DFFFFFF</color>
+
+    <color name="itemColor">#FFFFFF</color>
+
+    <color name="textColorForm">#212121</color>
+    <!-- 用于输入框内的默认文字色 -->
+    <color name="textColorHint">#757575</color>
+    <!-- 用于警告提示、赞、性别 -->
+    <color name="textColorWarning">#FF466D</color>
+    <!-- 数字mark的背景色 -->
+    <color name="markColor">#FFFE3824</color>
+    <!-- 深灰。用于灰色文字 -->
+    <color name="textColorGrey">#BEBEBE</color>
+    <!-- 浅灰，用于深色背景上的一般文字 -->
+    <color name="textColorLightGrey">#FFC9C0BC</color>
+
+    <color name="colorDivider">#DBD6D3</color>
+
+    <!-- 所有点缀性颜色，比如点赞，评论，加关注，评分 -->
+    <color name="colorAction">#FFB0A1</color>
+    <!-- 所有点击状态颜色 -->
+
+    <!--首页底部tab的背景色-->
+    <color name="colorMainBottomTabBackground">#CCFFFFFF</color>
+    <!--tab的指示器颜色-->
+    <color name="colorIndicator">#C69986</color>
+
+    <!-- 所有tab页面的未选中状态文字 -->
+    <color name="textColorNormal">#FFC9C0BC</color>
+
+    <!--图片张数背景色-->
+    <color name="textImageCountColor">#4D000000</color>
+
+    <!--图片张数背景色-->
+    <color name="feedLinkBackgroundColor">#66000000</color>
+
+    <color name="avatarBorderColor">#FFFFFF</color>
+
+    <color name="dialogBackgroundColor">#E0000000</color>
+
+    <color name="dialog_background">#FFFFFFFF</color>
+
+    <color name="post_background">#FFFFFF</color>
+    <color name="experience_bottom_bar_background">#F2FFFFFF</color>
+
+    <color name="personalAvatarBorderColor">#1A000000</color>
+    <color name="personalCoverOverlay">#99A47F78</color>
+    <color name="subjectOverlay">#4D000000</color>
+    <color name="maleColor">#BFF0DD</color>
+    <color name="femaleColor">#FFB0A1</color>
+    <color name="toggleThumbColor">#FFFFFF</color>
+
+    <!-- - 100% — FF-->
+    <!-- - 95% — F2-->
+    <!-- - 90% — E6-->
+    <!-- - 85% — D9-->
+    <!-- - 80% — CC-->
+    <!-- - 75% — BF-->
+    <!-- - 70% — B3-->
+    <!-- - 65% — A6-->
+    <!-- - 60% — 99-->
+    <!-- - 55% — 8C-->
+    <!-- - 50% — 80-->
+    <!-- - 45% — 73-->
+    <!-- - 40% — 66-->
+    <!-- - 35% — 59-->
+    <!-- - 30% — 4D-->
+    <!-- - 25% — 40-->
+    <!-- - 20% — 33-->
+    <!-- - 15% — 26-->
+    <!-- - 10% — 1A-->
+    <!-- - 5% — 0D-->
+    <!-- - 0% — 00-->
+</resources>
+

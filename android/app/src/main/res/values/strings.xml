@@ -7,4 +7,5 @@
     <string name="exception_message_not_found">Cannot retrieve data. Check your internet connection</string>
     <string name="exception_market_not_found">没有检测到您安装的应用商店哦</string>
 
+    <string name="login_phone">Mobile Phone</string>
 </resources>

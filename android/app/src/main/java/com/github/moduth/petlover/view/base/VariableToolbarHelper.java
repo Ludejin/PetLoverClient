@@ -36,8 +36,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.amokie.stay.R;
 import com.github.moduth.ext.utils.ResourceUtils;
+import com.github.moduth.petlover.R;
 
 import java.util.LinkedList;
 
