@@ -26,7 +26,7 @@ package com.github.moduth.petlover.usersystem;
 
 import com.github.moduth.ext.component.cache.sp.ConfigManager;
 import com.github.moduth.ext.utils.StringUtils;
-import com.github.moduth.petlover.data.network.PlService;
+import com.github.moduth.petlover.data.network.PetloverService;
 import com.github.moduth.petlover.domain.model.TokenEntity;
 
 import javax.inject.Inject;
@@ -67,7 +67,7 @@ public class UserSystem {
             return;
         }
         mToken = token;
-        PlService.token = token;
+        PetloverService.token = token;
         ConfigManager.putString(KEY_TOKEN, token, ConfigManager.KEY_ACCOUNT);
     }
 

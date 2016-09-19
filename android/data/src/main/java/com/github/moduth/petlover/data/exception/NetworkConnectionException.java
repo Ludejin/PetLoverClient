@@ -1,7 +1,7 @@
 /*
  * The GPL License (GPL)
  *
- * Copyright (c) 2016 MarkZhai (http://zhaiyifan.cn)
+ * Copyright (c) 2016 Moduth (https://github.com/moduth)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,27 +35,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.moduth.petlover.domain.exception;
+package com.github.moduth.petlover.data.exception;
 
 /**
- * Exception throw by the application when a
- * search can't return a valid result.
+ * Exception throw by the application when a there is a
+ * network connection exception.
  */
-public class NotFoundException extends Exception {
+public class NetworkConnectionException extends Exception {
 
-    public NotFoundException() {
+    public NetworkConnectionException() {
         super();
     }
 
-    public NotFoundException(final String message) {
+    public NetworkConnectionException(final String message) {
         super(message);
     }
 
-    public NotFoundException(final String message, final Throwable cause) {
+    public NetworkConnectionException(final String message, final Throwable cause) {
         super(message, cause);
     }
 
-    public NotFoundException(final Throwable cause) {
+    public NetworkConnectionException(final Throwable cause) {
         super(cause);
     }
 }

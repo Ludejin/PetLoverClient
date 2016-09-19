@@ -1,7 +1,7 @@
 /*
  * The GPL License (GPL)
  *
- * Copyright (c) 2016 Moduth (https://github.com/moduth)
+ * Copyright (c) 2016 MarkZhai (http://zhaiyifan.cn/)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,24 +22,24 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.view;
+package com.github.moduth.uiframework.callback;
 
-import android.content.Context;
-import android.view.View;
+import android.app.Application;
 
-import com.github.moduth.petlover.view.widget.PetloverHeader;
+/**
+ * Application回调，主要是切前后台
+ * <p/>
+ * Created by zhaiyifan on 2015/7/31.
+ */
+public interface IApplicationLifecycleCallback {
+    void registerApplicationCallbacks(ApplicationCallbacks callback);
 
+    void unregisterApplicationCallbacks(ApplicationCallbacks callback);
 
+    // application callbacks
+    interface ApplicationCallbacks {
+        void onApplicationEnterForeground(Application application);
 
-public class PetloverUiFactory {
-
-    private static final String TAG = "PetloverUiFactory";
-
-    public static final String DEFAULT_TAG_BACKGROUND = "#FFB0A1";
-
-    public static View getPtrHeader(Context context) {
-        return new PetloverHeader(context);
+        void onApplicationEnterBackground(Application application);
     }
-
-
 }

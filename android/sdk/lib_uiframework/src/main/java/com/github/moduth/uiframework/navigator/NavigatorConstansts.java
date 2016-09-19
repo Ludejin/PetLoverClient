@@ -22,24 +22,40 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.view;
+package com.github.moduth.uiframework.navigator;
 
-import android.content.Context;
-import android.view.View;
+/**
+ * @author markzhai on 16/2/29
+ * @version 1.0.0
+ */
+public class NavigatorConstansts {
+    /**
+     * id, for example, 123
+     */
+    public static final String ID = "id";
 
-import com.github.moduth.petlover.view.widget.PetloverHeader;
+    /**
+     * id list, for example 101-102-103
+     */
+    public static final String IDS = "ids";
 
+    /**
+     * sort type, for example, new / hot
+     */
+    public static final String SORT = "sort";
 
+    /**
+     * title, for example, show at ActionBar "Homepage"
+     */
+    public static final String TITLE = "title";
 
-public class PetloverUiFactory {
+    /**
+     * url, for example, open in h5 container  "http://www.google.com"
+     */
+    public static final String URL = "url";
 
-    private static final String TAG = "PetloverUiFactory";
-
-    public static final String DEFAULT_TAG_BACKGROUND = "#FFB0A1";
-
-    public static View getPtrHeader(Context context) {
-        return new PetloverHeader(context);
-    }
-
-
+    /**
+     * tab, from 1
+     */
+    public static final String TAB = "tab";
 }

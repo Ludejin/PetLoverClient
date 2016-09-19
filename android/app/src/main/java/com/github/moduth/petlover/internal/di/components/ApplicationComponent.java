@@ -31,6 +31,7 @@ import com.github.moduth.petlover.domain.executor.PostExecutionThread;
 import com.github.moduth.petlover.domain.executor.ThreadExecutor;
 import com.github.moduth.petlover.internal.di.module.ApplicationModule;
 import com.github.moduth.petlover.usersystem.UserSystem;
+import com.github.moduth.petlover.view.base.PetloverActivity;
 
 import javax.inject.Singleton;
 
@@ -40,6 +41,7 @@ import dagger.Component;
 @Component(modules = {ApplicationModule.class})
 public interface ApplicationComponent {
 
+    void inject(PetloverActivity baseActivity);
 
     // Exposed to sub-graphs.
     Context context();

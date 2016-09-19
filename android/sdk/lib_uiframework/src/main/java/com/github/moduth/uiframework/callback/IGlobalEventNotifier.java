@@ -1,7 +1,7 @@
 /*
  * The GPL License (GPL)
  *
- * Copyright (c) 2016 Moduth (https://github.com/moduth)
+ * Copyright (c) 2016 MarkZhai (http://zhaiyifan.cn/)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,24 +22,32 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.view;
+package com.github.moduth.uiframework.callback;
 
 import android.content.Context;
-import android.view.View;
 
-import com.github.moduth.petlover.view.widget.PetloverHeader;
+/**
+ * 全局事件通知器接口
+ * <p/>
+ * Created by zhaiyifan on 2015/8/6.
+ */
+public interface IGlobalEventNotifier {
+    void create(Context context);
 
+    void terminate(Context context);
 
+    void lowMemory();
 
-public class PetloverUiFactory {
+    void enterForeground();
 
-    private static final String TAG = "PetloverUiFactory";
+    void enterBackground();
 
-    public static final String DEFAULT_TAG_BACKGROUND = "#FFB0A1";
+    void login(long uin);
 
-    public static View getPtrHeader(Context context) {
-        return new PetloverHeader(context);
-    }
+    void logout();
 
+    void clearData();
 
+    //void shout(int what, Object...
+    void shout(Object event);
 }

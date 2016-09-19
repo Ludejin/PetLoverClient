@@ -22,49 +22,56 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover;
+package com.github.moduth.petlover.view.base;
 
 import android.os.Bundle;
 
-import com.github.moduth.ext.component.logger.Logger;
-import com.github.moduth.petlover.view.base.PetloverActivity;
+/**
+ * Created by Abner on 16/6/6.
+ * Email nimengbo@gmail.com
+ * GitHub https://github.com/nimengbo
+ */
+public abstract class PetloverPageLazyFragment extends PetloverPageFragment {
 
-import cn.smssdk.EventHandler;
-import cn.smssdk.SMSSDK;
-
-
-public class LoginActivity extends PetloverActivity {
-
-    private final static String TAG = "LoginActivity";
-
+    protected boolean isViewInitiated;
+    protected boolean isVisibleToUser;
+    protected boolean isDataInitiated;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
-        SMSSDK.initSDK(this, "17106857745de", "3e108f0e5ba7220cd5a7b227d174ca4f");
-        SMSSDK.registerEventHandler(new EventHandler(){
-
-            @Override
-            public void onRegister() {
-                super.onRegister();
-                Logger.d(TAG,"onRegister");
-            }
-
-            @Override
-            public void afterEvent(int i, int i1, Object o) {
-                Logger.d(TAG,"afterEvent" + i);
-            }
-        });
-        SMSSDK.getVerificationCode("86", "your phone");
-
     }
 
     @Override
-    protected String pageName() {
-        return TAG;
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        isViewInitiated = true;
+        prepareFetchData();
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        this.isVisibleToUser = isVisibleToUser;
+        prepareFetchData();
+    }
+
+    public boolean prepareFetchData() {
+        return prepareFetchData(false);
+    }
+
+    /**
+     * 准备去取数据
+     * @param forceUpdate 是否强制刷新数据
+     * @return
+     */
+    public boolean prepareFetchData(boolean forceUpdate) {
+        if (isVisibleToUser && isViewInitiated && (!isDataInitiated || forceUpdate)) {
+            fetchData();
+            isDataInitiated = true;
+            return true;
+        }
+        return false;
+    }
 
 }

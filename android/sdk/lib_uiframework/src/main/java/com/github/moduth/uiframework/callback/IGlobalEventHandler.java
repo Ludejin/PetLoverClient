@@ -1,7 +1,7 @@
 /*
  * The GPL License (GPL)
  *
- * Copyright (c) 2016 MarkZhai (http://zhaiyifan.cn)
+ * Copyright (c) 2016 MarkZhai (http://zhaiyifan.cn/)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,11 +22,40 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.exception;
+package com.github.moduth.uiframework.callback;
+
+import android.content.Context;
+import android.content.Intent;
 
 /**
- * @author markzhai on 16/7/6
- * @version 1.3.0
+ * 全局事件处理器接口
+ * <p/>
+ * Created by zhaiyifan on 2015/8/6.
  */
-public class UploadErrorException extends Exception {
+public interface IGlobalEventHandler {
+    void onEnterForeground();
+
+    void onEnterBackground();
+
+    void onScreenOn();
+
+    void onScreenOff();
+
+    void onUSBConnected();
+
+    void onUSBDisconnected();
+
+    void onCreate(final Context context);
+
+    void onTerminate(final Context context);
+
+    void onLowMemory();
+
+    void onLogin(long uin);
+
+    void onLogout();
+
+    void onClearData();
+
+    void onPhoneBoot(Context context, Intent intent);
 }

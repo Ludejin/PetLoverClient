@@ -75,7 +75,7 @@ public class HeadInterceptor implements Interceptor {
                 .addHeader(HEADER_APP_ID, HEADER_APP_ID_VALUE)
                 .addHeader(HEADER_APP_VER, Ext.g().getVersionName())
                 .addHeader(HEADER_APP_BUILD_NO, Ext.g().getBuilderNumber())
-                .addHeader(HEADER_VUSER, PlService.token)
+                .addHeader(HEADER_VUSER, PetloverService.token)
                 .addHeader(HEADER_SCREEN_SCALE, String.valueOf(ViewUtils.getDensity())) //缩放比 1/2/3
                 .addHeader(HEADER_SCREEN_WIDTH, HEADER_SCREEN_WIDTH_VALUE)
                 .addHeader(HEADER_SCREEN_HEIGHT, HEADER_SCREEN_HEIGHT_VALUE)

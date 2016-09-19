@@ -34,9 +34,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
-
 import okhttp3.Cookie;
 import okhttp3.CookieJar;
 import okhttp3.HttpUrl;
@@ -46,7 +43,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class PlService {
+public class PetloverService {
 
     private static final String TAG = "MrService";
 
@@ -63,7 +60,7 @@ public class PlService {
     public static String token = ConfigManager.getString("token", "", ConfigManager.KEY_ACCOUNT);;
     public static boolean wifiHighQuality = false;
 
-    private static PlService mInstance;
+    private static PetloverService mInstance;
 
     private Retrofit mRetrofit;
 
@@ -76,11 +73,11 @@ public class PlService {
         return isDevEnvironment ? WEB_DEV_URL : WEB_PRODUCT_URL;
     }
 
-    public static PlService getInstance() {
+    public static PetloverService getInstance() {
         if (mInstance == null) {
-            synchronized (PlService.class) {
+            synchronized (PetloverService.class) {
                 if (mInstance == null) {
-                    mInstance = new PlService();
+                    mInstance = new PetloverService();
                 }
             }
         }
@@ -95,11 +92,11 @@ public class PlService {
         return mRetrofit.create(clazz);
     }
 
-    private PlService() {
+    private PetloverService() {
         this(true);
     }
 
-    private PlService(boolean useRxJava) {
+    private PetloverService(boolean useRxJava) {
         final Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd HH:mm:ss").create();
         Retrofit.Builder builder = new Retrofit.Builder()

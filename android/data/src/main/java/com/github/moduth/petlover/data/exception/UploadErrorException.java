@@ -22,24 +22,11 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.view;
+package com.github.moduth.petlover.data.exception;
 
-import android.content.Context;
-import android.view.View;
-
-import com.github.moduth.petlover.view.widget.PetloverHeader;
-
-
-
-public class PetloverUiFactory {
-
-    private static final String TAG = "PetloverUiFactory";
-
-    public static final String DEFAULT_TAG_BACKGROUND = "#FFB0A1";
-
-    public static View getPtrHeader(Context context) {
-        return new PetloverHeader(context);
-    }
-
-
+/**
+ * @author markzhai on 16/7/6
+ * @version 1.3.0
+ */
+public class UploadErrorException extends Exception {
 }

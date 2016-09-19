@@ -1,7 +1,7 @@
 /*
  * The GPL License (GPL)
  *
- * Copyright (c) 2016 MarkZhai (http://zhaiyifan.cn)
+ * Copyright (c) 2016 Moduth (https://github.com/moduth)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,8 +22,7 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.domain.exception;
-
+package com.github.moduth.petlover.data.exception;
 
 import com.github.moduth.petlover.domain.model.PlResponse;
 import com.github.moduth.petlover.domain.model.TokenEntity;
@@ -46,7 +45,7 @@ public class ResponseException extends Exception {
 
     private final int mStatusCode;
 
-    private TokenEntity token;
+    private TokenEntity mToken;
 
     /**
      * @param response 全局响应格式
@@ -57,7 +56,7 @@ public class ResponseException extends Exception {
 
         if (mStatusCode == ERROR_CODE_NEED_PERFECT_PROFILE) {
             try {
-                token = (TokenEntity) response.getData();
+                mToken = (TokenEntity) response.getData();
             } catch (ClassCastException e) {
 //                Logger.e(TAG, e);
             }
@@ -83,7 +82,7 @@ public class ResponseException extends Exception {
         return mStatusCode;
     }
 
-    public TokenEntity getToken() {
-        return token;
+    public TokenEntity getVuser() {
+        return mToken;
     }
 }

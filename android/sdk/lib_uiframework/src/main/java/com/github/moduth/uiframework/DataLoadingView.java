@@ -22,24 +22,20 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.view;
+package com.github.moduth.uiframework;
 
-import android.content.Context;
-import android.view.View;
+/**
+ * @author markzhai on 16/2/28
+ * @version 1.0.0
+ */
+public interface DataLoadingView<MODEL> {
+    void setData(MODEL model);
 
-import com.github.moduth.petlover.view.widget.PetloverHeader;
+    void showFailure(String str);
 
+    void showLoading();
 
+    void showNoData();
 
-public class PetloverUiFactory {
-
-    private static final String TAG = "PetloverUiFactory";
-
-    public static final String DEFAULT_TAG_BACKGROUND = "#FFB0A1";
-
-    public static View getPtrHeader(Context context) {
-        return new PetloverHeader(context);
-    }
-
-
+    void showSuccess();
 }

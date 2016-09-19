@@ -27,7 +27,7 @@ package com.github.moduth.petlover.internal.di.module;
 import android.content.Context;
 
 
-import com.github.moduth.petlover.PlApplication;
+import com.github.moduth.petlover.PetloverApplication;
 import com.github.moduth.petlover.UIThread;
 import com.github.moduth.petlover.data.executor.JobExecutor;
 import com.github.moduth.petlover.domain.executor.PostExecutionThread;
@@ -44,9 +44,9 @@ import dagger.Provides;
 @Module
 public class ApplicationModule {
 
-    private final PlApplication mApplication;
+    private final PetloverApplication mApplication;
 
-    public ApplicationModule(PlApplication application) {
+    public ApplicationModule(PetloverApplication application) {
         mApplication = application;
     }
 

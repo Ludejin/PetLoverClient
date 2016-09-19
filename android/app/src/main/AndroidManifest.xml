@@ -11,7 +11,7 @@
 
 
     <application
-      android:name=".PlApplication"
+      android:name=".PetloverApplication"
       android:allowBackup="true"
       android:label="@string/app_name"
       android:icon="@mipmap/ic_launcher"

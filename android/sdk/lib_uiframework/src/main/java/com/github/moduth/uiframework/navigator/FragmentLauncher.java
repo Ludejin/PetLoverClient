@@ -22,24 +22,21 @@
  * SOFTWARE.
  */
 
-package com.github.moduth.petlover.view;
+package com.github.moduth.uiframework.navigator;
 
-import android.content.Context;
-import android.view.View;
+import com.github.moduth.uiframework.navigator.backstack.IFragmentBackHelper;
 
-import com.github.moduth.petlover.view.widget.PetloverHeader;
+/**
+ * @author markzhai on 16/2/29
+ * @version 1.0.0
+ */
+public interface FragmentLauncher {
 
-
-
-public class PetloverUiFactory {
-
-    private static final String TAG = "PetloverUiFactory";
-
-    public static final String DEFAULT_TAG_BACKGROUND = "#FFB0A1";
-
-    public static View getPtrHeader(Context context) {
-        return new PetloverHeader(context);
-    }
-
-
+    /**
+     * 启动界面
+     *
+     * @param helper fragment返回栈帮助类
+     * @param params 参数
+     */
+    void open(IFragmentBackHelper helper, NavigatorParams params);
 }

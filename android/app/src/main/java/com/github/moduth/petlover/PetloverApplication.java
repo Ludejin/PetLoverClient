@@ -11,6 +11,9 @@ import com.github.moduth.ext.component.logger.DebugLogger;
 import com.github.moduth.ext.component.logger.Logger;
 import com.github.moduth.ext.component.logger.ReleaseLogger;
 import com.github.moduth.ext.utils.ProcessUtils;
+import com.github.moduth.petlover.internal.di.components.ApplicationComponent;
+import com.github.moduth.petlover.internal.di.components.DaggerApplicationComponent;
+import com.github.moduth.petlover.internal.di.module.ApplicationModule;
 import com.i18n.reactnativei18n.ReactNativeI18n;
 
 import java.util.Arrays;
@@ -19,30 +22,12 @@ import java.util.List;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
-public class PlApplication extends Application implements ReactApplication {
+public class PetloverApplication extends Application {
 
-    private final static String TAG = "PlApplication";
+    private final static String TAG = "PetloverApplication";
 
-    private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
-        @Override
-        protected boolean getUseDeveloperSupport() {
-            return BuildConfig.DEBUG;
-        }
+    private ApplicationComponent mApplicationComponent;
 
-        @Override
-        protected List<ReactPackage> getPackages() {
-            return Arrays.<ReactPackage>asList(
-                    new MainReactPackage(),
-                    new RNSimpleAlertDialogPackage(),
-                    new ReactNativeI18n()
-            );
-        }
-    };
-
-    @Override
-    public ReactNativeHost getReactNativeHost() {
-        return mReactNativeHost;
-    }
 
 
     @Override
@@ -53,7 +38,7 @@ public class PlApplication extends Application implements ReactApplication {
             return ;
         }
         initLog();
-
+        initInjector();
     }
 
     private void initLog() {
@@ -64,4 +49,14 @@ public class PlApplication extends Application implements ReactApplication {
             Logger.init(this, ReleaseLogger.getInstance());
         }
     }
+    private void initInjector() {
+        mApplicationComponent = DaggerApplicationComponent.builder()
+                .applicationModule(new ApplicationModule(this))
+                .build();
+    }
+
+    public ApplicationComponent getApplicationComponent() {
+        return mApplicationComponent;
+    }
+
 }
